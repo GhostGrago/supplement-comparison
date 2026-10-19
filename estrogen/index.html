@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>女性雌激素保健品对比</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@700;900&display=swap" rel="stylesheet" />
+    <style>
+      :root{
+        --bg:#faf6f3; --surface:#ffffff; --surface2:#f4ece8;
+        --ink:#2c2126; --muted:#75636b; --faint:#9b8791;
+        --line:#e8dbd4;
+        --accent:#9d2c54; --accent-ink:#ffffff; --accent-soft:#f9e6ec;
+        --good:#22704f; --good-soft:#e2f1e9;
+        --warn:#a35b12; --warn-soft:#f8ecd9;
+        --bad:#b3261e; --bad-soft:#f9e4e2;
+        --info:#38618c; --info-soft:#e5edf6;
+        --shadow:0 1px 2px rgba(60,20,35,.06),0 8px 24px rgba(60,20,35,.07);
+        --radius:14px;
+      }
+      @media (prefers-color-scheme: dark){
+        :root{
+          --bg:#171114; --surface:#221a1e; --surface2:#2a2025;
+          --ink:#f3e9ec; --muted:#bda6ae; --faint:#937f89;
+          --line:#3a2c33;
+          --accent:#e58bb0; --accent-ink:#2a121e; --accent-soft:#3d2230;
+          --good:#6fce9f; --good-soft:#1d3328;
+          --warn:#e8b96a; --warn-soft:#3a2d16;
+          --bad:#f08a84; --bad-soft:#3d201d;
+          --info:#8db6e2; --info-soft:#1f2f42;
+          --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
+        }
+      }
+      *{box-sizing:border-box}
+      html{scroll-behavior:smooth}
+      body{
+        margin:0; background:var(--bg); color:var(--ink);
+        font-family:"Noto Sans SC",-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+        font-size:16px; line-height:1.65; -webkit-text-size-adjust:100%;
+      }
+      .wrap{max-width:1060px; margin:0 auto; padding:0 16px 64px}
+      h1,h2,h3{font-family:"Noto Serif SC","Songti SC",serif; line-height:1.3; margin:0}
+      a{color:var(--accent); text-decoration-thickness:1px; text-underline-offset:3px}
+      button{font:inherit; cursor:pointer}
+
+      /* ---------- sticky tab bar ---------- */
+      .tabbar{
+        position:sticky; top:0; z-index:50;
+        background:color-mix(in srgb, var(--bg) 88%, transparent);
+        backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+        border-bottom:1px solid var(--line);
+      }
+      .tabbar-in{max-width:1060px; margin:0 auto; padding:10px 16px; display:flex; gap:8px; overflow-x:auto; scrollbar-width:none}
+      .tabbar-in::-webkit-scrollbar{display:none}
+      .tabbar a{
+        flex:0 0 auto; color:var(--ink); text-decoration:none; font-size:14px; font-weight:700;
+        padding:7px 14px; border-radius:999px; border:1px solid var(--line); background:var(--surface);
+      }
+      .tabbar a.active{background:var(--accent); color:var(--accent-ink); border-color:var(--accent)}
+
+      /* ---------- verdict hero ---------- */
+      .hero{padding:28px 0 6px}
+      .hero .kicker{font-size:13px; font-weight:700; letter-spacing:.14em; color:var(--accent); margin:0 0 10px}
+      .hero h1{font-size:clamp(26px,5.4vw,40px); font-weight:900}
+      .hero h1 em{font-style:normal; color:var(--accent)}
+      .hero .lede{color:var(--muted); max-width:46em; margin:12px 0 0; font-size:15.5px}
+      .stats{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:20px 0 4px}
+      .stat{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:14px 16px; box-shadow:var(--shadow)}
+      .stat b{display:block; font-family:"Noto Serif SC",serif; font-size:clamp(22px,4.6vw,30px); color:var(--accent); line-height:1.15}
+      .stat span{font-size:13px; color:var(--muted); display:block; margin-top:4px; line-height:1.5}
+      @media (max-width:560px){ .stats{grid-template-columns:1fr} }
+
+      /* ---------- sections ---------- */
+      section{margin-top:38px; scroll-margin-top:70px}
+      .sec-head{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:6px}
+      .sec-head h2{font-size:clamp(21px,4vw,27px); font-weight:900}
+      .sec-head .hint{color:var(--muted); font-size:13.5px}
+
+      /* ---------- accordion ---------- */
+      .acc{border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); overflow:hidden; box-shadow:var(--shadow)}
+      .acc + .acc{margin-top:10px}
+      .acc-btn{
+        width:100%; display:flex; align-items:center; gap:10px; text-align:left;
+        background:none; border:0; padding:15px 16px; color:var(--ink); font-weight:700; font-size:15.5px;
+      }
+      .acc-btn .chev{margin-left:auto; color:var(--faint); transition:transform .25s; flex:0 0 auto; font-size:13px}
+      .acc.open .acc-btn .chev{transform:rotate(180deg)}
+      .acc-body{display:none; padding:0 16px 16px; color:var(--muted); font-size:14.5px}
+      .acc.open .acc-body{display:block}
+      .acc-body p{margin:0 0 8px}
+      .acc-body p:last-child{margin-bottom:0}
+      .acc-body strong{color:var(--ink)}
+
+      /* ---------- badges ---------- */
+      .badge{
+        display:inline-flex; align-items:center; gap:4px; font-size:12px; font-weight:700;
+        padding:2px 9px; border-radius:999px; white-space:nowrap; flex:0 0 auto;
+      }
+      .b-good{background:var(--good-soft); color:var(--good)}
+      .b-warn{background:var(--warn-soft); color:var(--warn)}
+      .b-bad{background:var(--bad-soft); color:var(--bad)}
+      .b-info{background:var(--info-soft); color:var(--info)}
+      .b-accent{background:var(--accent-soft); color:var(--accent)}
+      .b-mute{background:var(--surface2); color:var(--muted)}
+
+      /* ---------- product controls ---------- */
+      .controls{
+        position:sticky; top:53px; z-index:40; padding:10px 0 8px;
+        background:color-mix(in srgb, var(--bg) 92%, transparent);
+        backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+      }
+      .chips{display:flex; gap:8px; flex-wrap:wrap}
+      .chip{
+        border:1px solid var(--line); background:var(--surface); color:var(--ink);
+        border-radius:999px; padding:6px 14px; font-size:13.5px; font-weight:700;
+      }
+      .chip[aria-pressed="true"]{background:var(--accent); color:var(--accent-ink); border-color:var(--accent)}
+      .sortrow{display:flex; align-items:center; gap:10px; margin-top:10px; flex-wrap:wrap}
+      .sortrow label{font-size:13.5px; color:var(--muted); font-weight:700}
+      .sortrow select{
+        font:inherit; font-size:14px; color:var(--ink); background:var(--surface);
+        border:1px solid var(--line); border-radius:10px; padding:7px 10px; max-width:100%;
+      }
+      .count{font-size:13px; color:var(--faint); margin-left:auto}
+
+      /* ---------- product cards ---------- */
+      .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:14px; margin-top:8px}
+      @media (max-width:400px){ .grid{grid-template-columns:1fr} }
+      .card{
+        background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+        box-shadow:var(--shadow); padding:16px; display:flex; flex-direction:column; gap:10px; min-width:0;
+      }
+      .card.top{border-color:var(--accent); box-shadow:0 0 0 1px var(--accent), var(--shadow)}
+      .card h3{font-size:17px; font-weight:900}
+      .card .brand{font-size:13px; color:var(--faint); font-weight:700}
+      .badges{display:flex; gap:6px; flex-wrap:wrap}
+      .ing{font-size:14px; color:var(--muted); margin:0}
+      .ing strong{color:var(--ink)}
+      .price-row{display:flex; align-items:flex-end; gap:14px; flex-wrap:wrap; border-top:1px dashed var(--line); padding-top:10px}
+      .price b{font-family:"Noto Serif SC",serif; font-size:21px; color:var(--ink)}
+      .price span{display:block; font-size:12px; color:var(--faint)}
+      .perday b{font-size:16px; color:var(--accent); font-family:"Noto Serif SC",serif}
+      .perday span{display:block; font-size:12px; color:var(--faint)}
+      .meta{display:flex; gap:6px 14px; flex-wrap:wrap; font-size:13px; color:var(--muted)}
+      .meta b{color:var(--ink)}
+      .more-btn{
+        align-self:flex-start; background:none; border:1px solid var(--line); color:var(--accent);
+        border-radius:999px; padding:5px 14px; font-size:13.5px; font-weight:700;
+      }
+      .more{display:none; font-size:14px; color:var(--muted); border-top:1px dashed var(--line); padding-top:10px}
+      .more.open{display:block}
+      .more p{margin:0 0 8px}
+      .more p:last-child{margin:0}
+      .empty{padding:28px 16px; text-align:center; color:var(--muted); background:var(--surface); border:1px dashed var(--line); border-radius:var(--radius)}
+
+      /* ---------- ingredient rows ---------- */
+      .dose{display:flex; gap:8px; flex-wrap:wrap; margin:10px 0}
+      .dose div{background:var(--surface2); border-radius:10px; padding:8px 12px; font-size:13.5px; flex:1 1 200px}
+      .dose b{display:block; font-size:12px; color:var(--faint); margin-bottom:2px}
+      .flag{color:var(--bad); font-weight:700}
+
+      /* ---------- recommendation cards ---------- */
+      .rec-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:14px}
+      .rec{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:18px}
+      .rec.first{border-color:var(--accent); box-shadow:0 0 0 1px var(--accent), var(--shadow)}
+      .rec .rank{font-family:"Noto Serif SC",serif; font-size:13px; font-weight:900; color:var(--accent); letter-spacing:.08em}
+      .rec h3{font-size:18px; margin:6px 0 4px}
+      .rec .rp{font-family:"Noto Serif SC",serif; font-size:20px; margin:6px 0}
+      .rec .rp small{font-size:13px; color:var(--muted); font-family:"Noto Sans SC",sans-serif}
+      .rec p{font-size:14px; color:var(--muted); margin:8px 0 0}
+      .callout{
+        margin-top:14px; border:1px solid var(--accent); background:var(--accent-soft);
+        border-radius:var(--radius); padding:16px 18px; font-size:14.5px;
+      }
+      .callout h3{font-size:16px; margin-bottom:6px}
+      .callout p{margin:0; color:var(--ink)}
+      .avoid-list{margin:10px 0 0; padding:0; list-style:none; display:grid; gap:8px}
+      .avoid-list li{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:10px 14px; font-size:14px; color:var(--muted)}
+      .avoid-list b{color:var(--ink)}
+
+      /* ---------- safety ---------- */
+      .safe-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:10px}
+      .sources{font-size:13px; color:var(--muted)}
+      .sources li{margin-bottom:5px; overflow-wrap:anywhere}
+      footer{margin-top:44px; border-top:1px solid var(--line); padding-top:16px; font-size:13px; color:var(--faint)}
+      footer p{margin:0 0 8px}
+      @media (prefers-reduced-motion: reduce){
+        html{scroll-behavior:auto}
+        .acc-btn .chev{transition:none}
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="tabbar" aria-label="页面导航">
+      <div class="tabbar-in" id="tabbar">
+        <a href="#verdict" class="active">先说结论</a>
+        <a href="#products">产品对比</a>
+        <a href="#ingredients">成分证据</a>
+        <a href="#recommend">买哪个</a>
+        <a href="#safety">安全提示</a>
+      </div>
+    </nav>
+
+    <div class="wrap">
+      <!-- ================= VERDICT ================= -->
+      <header class="hero" id="verdict">
+        <p class="kicker">女性"雌激素"保健品 · 证据核查（加拿大购买）</p>
+        <h1>先说结论：<em>没有任何非处方保健品被证明能升高雌激素</em>，它们最多只能缓解一点症状。</h1>
+        <p class="lede">针对那张"女性活力提升剂 Female Booster"宣传单（野山芋、黑芝麻、人参、"植物雌激素"，号称调理内分泌、延缓更年期、丰胸嫩肤）——我们核查了临床证据和加拿大在售的 11 款同类产品。结论是：宣传单的核心卖点在生物化学上就不成立；真要买，选有临床试验、剂量公开、加拿大本地能买到的，避开专利配方。数据核查于 2026-10-19，价格为当日在线观察价，下单前请再确认。</p>
+        <div class="stats">
+          <div class="stat"><b>0 款</b><span>随机对照试验荟萃分析显示：大豆异黄酮对雌二醇（雌激素）和 FSH <strong>没有影响</strong>，证据确定性高。</span></div>
+          <div class="stat"><b>约 0.1%</b><span>最强的植物雌激素染料木素，效力只有雌二醇的约千分之一，且在雌激素充足时反而可能起拮抗作用。</span></div>
+          <div class="stat"><b>约 −21%</b><span>这类产品唯一站得住的效果：大豆异黄酮 ≥50 mg/天、连吃 ≥12 周，潮热频率约降 21%、严重程度约降 26%。</span></div>
+        </div>
+      </header>
+
+      <section aria-label="宣传单说法核查" style="margin-top:22px">
+        <div class="sec-head"><h2>宣传单上的说法，逐条核查</h2><span class="hint">点开看依据</span></div>
+        <div id="claims"></div>
+      </section>
+
+      <!-- ================= PRODUCTS ================= -->
+      <section id="products">
+        <div class="sec-head"><h2>产品对比</h2><span class="hint">11 款 · 价格为加元（CAD），2026-10-19 在线观察价</span></div>
+        <div class="controls">
+          <div class="chips" id="filters" role="group" aria-label="筛选产品">
+            <button class="chip" data-filter="all" aria-pressed="true">全部</button>
+            <button class="chip" data-filter="recommended" aria-pressed="false">值得买</button>
+            <button class="chip" data-filter="canadian" aria-pressed="false">加拿大品牌</button>
+            <button class="chip" data-filter="transparent" aria-pressed="false">剂量公开</button>
+            <button class="chip" data-filter="cadprice" aria-pressed="false">有加元价</button>
+          </div>
+          <div class="sortrow">
+            <label for="sort">排序</label>
+            <select id="sort">
+              <option value="rank">推荐顺序</option>
+              <option value="perday">每日成本：低 → 高</option>
+              <option value="price">总价：低 → 高</option>
+              <option value="rating">评分：高 → 低</option>
+              <option value="days">供应天数：多 → 少</option>
+            </select>
+            <span class="count" id="count"></span>
+          </div>
+        </div>
+        <div class="grid" id="grid"></div>
+        <div class="empty" id="empty" hidden>这个筛选下没有产品，换个筛选试试。</div>
+      </section>
+
+      <!-- ================= INGREDIENTS ================= -->
+      <section id="ingredients">
+        <div class="sec-head"><h2>成分证据</h2><span class="hint">11 种常见成分 · 点开看证据、研究剂量与风险</span></div>
+        <div id="ing-list"></div>
+      </section>
+
+      <!-- ================= RECOMMEND ================= -->
+      <section id="recommend">
+        <div class="sec-head"><h2>买哪个：结论</h2><span class="hint">目标 = 围绝经期支持（潮热、精力、情绪），在加拿大买</span></div>
+        <div class="rec-grid">
+          <article class="rec first">
+            <div class="rank">首选 · 第 1 名</div>
+            <h3>Webber Naturals 更年期多症状缓解（EstroG-100）</h3>
+            <div class="rp">约 $36.79 <small>/ 月（约 $1.23/天）</small></div>
+            <p>这批产品里唯一加拿大制造、配方经 2 项随机对照试验验证、且按研究剂量（514 mg/天，1 粒/天）足量添加的。它<strong>不含植物雌激素、不走雌激素路线</strong>，对潮热、盗汗、情绪、睡眠都有试验支持，标签全公开、无专利配方。有激素敏感病史顾虑的人也相对更稳妥。</p>
+            <p>购买：webbernaturals.com 官网（核查时有货）或加拿大各大药房的 Webber 货架。</p>
+          </article>
+          <article class="rec">
+            <div class="rank">次选 · 第 2 名</div>
+            <h3>Estroven（加拿大 NPN 持证配方）</h3>
+            <div class="rp">约 $33–38 <small>/ 月</small></div>
+            <p>组合了证据最好的两种成分（黑升麻 + 大豆异黄酮），有加拿大卫生部 NPN 编号（80024706 / 80032569），Jean Coutu、Shoppers 等药房普遍有售，剂量公开、无专利配方。</p>
+            <p>注意：加拿大版"Complete"新配方（大黄提取物）与旧版黑升麻/大豆配方因零售商而异，买时看清标签；"Maximum Strength + Energy"版含咖啡因 49 mg，怕咖啡因、睡眠差的人避开。</p>
+          </article>
+          <article class="rec">
+            <div class="rank">极简之选 · 第 3 名</div>
+            <h3>Remifemin（黑升麻单一提取物）</h3>
+            <div class="rp">约 $34.97 <small>/ 60 天（约 $0.58/天）</small></div>
+            <p>全球研究最多的黑升麻标准化提取物，上市 60 多年，不含激素，单价最低。适合只想要单一成分、不想吃复合配方的人。</p>
+            <p>注意：黑升麻整体证据不一致（Cochrane 综述未显示优于安慰剂），且有罕见肝损伤报告——最长吃 6 个月，8–12 周没效果就停；vitamart.ca 核查时缺货。</p>
+          </article>
+        </div>
+        <div class="callout">
+          <h3>如果她的真实目标是"把雌激素升上去"</h3>
+          <p>请直接一点：<strong>保健品做不到。</strong>植物雌激素不改变雌二醇和 FSH，玛卡不改变任何性激素，野山芋在人体内根本无法转化成激素。如果怀疑真的雌激素不足（或想知道自己的水平），正确路径是看医生 + 抽血查雌二醇和 FSH；只有处方激素治疗能可靠地补充雌激素。医生还能顺带排除甲状腺问题——它的症状和围绝经期很像。别让保健品耽误了这次评估。</p>
+        </div>
+        <h3 style="margin-top:22px; font-size:17px">可选搭配与避开清单</h3>
+        <ul class="avoid-list">
+          <li><b>可选搭配：NOW 玛卡 $17.45</b> —— 想补精力/情绪/性欲可以加，但必须吃到试验剂量 3 g/天（约 6 粒/天，一瓶约 17 天）；吃不够基本等于没吃。它不含任何激素。</li>
+          <li><b>避开：Amberen</b> —— 395 mg 专利配方把每个成分的剂量全藏起来，还含味精（MSG），支持它的试验由厂商资助、作者有利益冲突；加拿大没有正规零售渠道，只能跨境买。透明度配不上价格。</li>
+          <li><b>避开：宣传单那种"野山芋 + 植物雌激素"产品</b>（如 Solaray 同类配方）—— 野山芋的人体转化在生物化学上不存在，所谓"雌激素提升"无从谈起；起作用的只可能是里面那点异黄酮，而剂量还不标。</li>
+          <li><b>避开：任何不标每个成分毫克数的产品</b>，以及把咖啡因塞进"能量版"配方的产品（睡眠和焦虑会更差）。</li>
+        </ul>
+      </section>
+
+      <!-- ================= SAFETY ================= -->
+      <section id="safety">
+        <div class="sec-head"><h2>安全提示</h2><span class="hint">点开看详情 · 有任何一条命中，先问医生再吃</span></div>
+        <div id="safe-list"></div>
+      </section>
+
+      <!-- ================= SOURCES ================= -->
+      <section aria-label="主要来源">
+        <div class="sec-head"><h2>主要来源</h2></div>
+        <ul class="sources">
+          <li>大豆异黄酮对雌二醇/FSH 无影响（系统综述与荟萃分析）：<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11784794/" target="_blank" rel="noopener">PMC11784794</a>；植物雌激素与性激素综述：<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7468963/" target="_blank" rel="noopener">PMC7468963</a></li>
+          <li>大豆异黄酮缓解潮热荟萃分析（Taku 2012）：<a href="http://www.ncbi.nlm.nih.gov/pubmed/?term=Menopause+2012%3B+19%287%29%3A776-790" target="_blank" rel="noopener">PubMed</a>；NAMS 立场（Medical News Today 转述）：<a href="https://www.medicalnewstoday.com/releases/233636" target="_blank" rel="noopener">medicalnewstoday.com</a></li>
+          <li>野山芋无法在人体内转化为激素：<a href="https://mlrb.net/does-wild-yam-cream-really-work-for-menopause/" target="_blank" rel="noopener">mlrb.net 野山芋霜 RCT 综述</a>；植物雌激素效力综述：<a href="https://newrootsherbal.com/flourish/health-conditions-body-systems/phytoestrogens-yes-or-no" target="_blank" rel="noopener">New Roots Herbal</a></li>
+          <li>红三叶草荟萃分析：<a href="https://pubmed.ncbi.nlm.nih.gov/17239573/" target="_blank" rel="noopener">PubMed 17239573</a>；月见草油阴性 RCT：<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2542782/" target="_blank" rel="noopener">PMC2542782</a>；EstroG-100 证据：<a href="https://www.healthywomen.org/your-health/facts-about-estrog-100" target="_blank" rel="noopener">healthywomen.org</a></li>
+          <li>黑升麻 Cochrane 结论与 NAMS 2023 立场：<a href="https://supplementscore.org/a/black-cohosh-for-menopause-cautious-yes-cautious-no.html" target="_blank" rel="noopener">supplementscore.org</a>；玛卡不改变性激素：<a href="http://wellnessinaging.com/supplements-remedies/maca-root-menopause" target="_blank" rel="noopener">wellnessinaging.com</a></li>
+          <li>产品与价格：<a href="https://webbernaturals.com/products/menopause-multi-symptom-relief" target="_blank" rel="noopener">Webber Naturals 官网（$36.79）</a>、<a href="https://www.jamiesonvitamins.com/products/complete-menopause-multi" target="_blank" rel="noopener">Jamieson 官网（$25.99）</a>、<a href="https://halohealthcare.com/fr/products/estroven-menopause-relief-and-mood-30-caplets" target="_blank" rel="noopener">Halo Healthcare（Estroven $37.75）</a>、<a href="https://www.vitamart.ca/collections/black-cohosh" target="_blank" rel="noopener">Vitamart（Remifemin $34.97 / DIM-Plus $43.49）</a>、<a href="https://vitasave.ca/products/canprev-healthy-hormones" target="_blank" rel="noopener">Vitasave（CanPrev $38.99）</a>、<a href="https://www.avivahealth.com/products/now-maca" target="_blank" rel="noopener">Aviva Health（NOW 玛卡 $17.45）</a>、<a href="https://ca.iherb.com/c/hormonal-health?p=2" target="_blank" rel="noopener">iHerb 加拿大站（Solaray CA$29.62）</a></li>
+          <li>加拿大更年期天然产品药房调查（2015，含 NPN 与日成本背景）：<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4414444/" target="_blank" rel="noopener">PMC4414444</a></li>
+        </ul>
+      </section>
+
+      <footer>
+        <p>本页为公开临床证据与在售产品信息的整理，不构成医疗建议。是否服用、与现有药物的相互作用，请咨询医生或药剂师。</p>
+        <p>价格与库存为 2026-10-19 在线观察值，变动频繁，下单前请在零售商页面复核；评分为当日可见的第三方评测/零售评分。</p>
+      </footer>
+    </div>
+
+    <script>
+      /* ================= data (all values from the 2026-10-19 research report) ================= */
+      var CLAIMS = [
+        { claim:"“吃 100 天调理好，恢复后不用再吃”", verdict:"没有证据", cls:"b-bad",
+          body:"<p>没有任何证据表明保健品能永久\"重置\"激素。绝经由卵巢卵泡不可逆地耗竭驱动；异黄酮和黑升麻的试验都只显示<strong>服用期间</strong>的效果，停用后不存在持续的\"调理好\"。这是营销话术，不是生理学。</p>" },
+        { claim:"“延缓更年期”", verdict:"做不到", cls:"b-bad",
+          body:"<p><strong>目前没有任何获批疗法能推迟自然绝经。</strong>观察性研究发现鱼油、B 族维生素、抗氧化剂的使用与绝经稍晚相关，但证据明确指出这不是因果关系，也没有任何机构推荐靠保健品推迟绝经。</p>" },
+        { claim:"“胸部丰满、皮肤光滑”", verdict:"纯营销", cls:"b-bad",
+          body:"<p>植物雌激素的临床试验显示，它对乳房和子宫内膜组织<strong>没有雌激素样作用</strong>——这也是它相对安全的原因，但反过来说，靠它丰胸、嫩肤没有任何临床证据。</p>" },
+        { claim:"“野山芋 = 天然激素来源”", verdict:"生物化学上不成立", cls:"b-bad",
+          body:"<p>野山芋里的薯蓣皂苷（diosgenin）确实能在<strong>实验室里</strong>被转化成黄体酮/DHEA，但<strong>人体缺乏完成这一步的酶</strong>。北美绝经学会（NAMS）和美国妇产科学会（ACOG）都明确：野山芋产品不是人体黄体酮或雌激素的来源。一项随机试验中，野山芋霜没有改变任何激素水平，症状也不优于安慰剂。宣传单主打的成分，恰恰是被证伪得最彻底的。</p>" },
+        { claim:"“提升精力、抗疲劳、改善代谢”", verdict:"与雌激素无关", cls:"b-warn",
+          body:"<p>个别适应原成分（南非醉茄、玛卡、人参）有小型试验支持缓解疲劳和压力，但效果幅度小，<strong>且没有一种能升高雌激素</strong>。把精力改善包装成\"雌激素提升了\"，是偷换概念。</p>" }
+      ];
+
+      var PRODUCTS = [
+        { rank:1, name:"Menopause Multi-Symptom Relief", brand:"Webber Naturals（加拿大）",
+          verdict:"首选推荐", vcls:"b-accent", top:true, canadian:true, transparent:true,
+          ing:"<strong>EstroG-100 514 mg</strong>（当归属植物 + 威灵仙属 + 糙苏提取物复方），1 粒/天。<strong>非雌激素、非植物雌激素</strong>路线。",
+          price:36.79, priceNote:"30 粒 · 30 天", days:30, rating:null, npn:"官网页面未标注",
+          more:"<p>2 项随机对照试验（Chang 2012；Farzaneh 2024）支持其对潮热、情绪、睡眠的改善，加拿大制造，官网核查时有货。适合想避开植物雌激素的人。</p><p>来源：webbernaturals.com 官方产品页。</p>" },
+        { rank:2, name:"Complete Menopause Relief", brand:"Estroven（i-Health）",
+          verdict:"次选推荐", vcls:"b-good", canadian:false, transparent:true,
+          ing:"加拿大持证旧配方：<strong>黑升麻 40 mg + 大豆异黄酮 37.5 mg</strong>，1 片/天；美国版\"Complete\"为大黄根提取物 ERr 731 4 mg。无激素。",
+          price:37.75, priceNote:"30 片 · 约 30 天（Halo Healthcare 价）", days:30, rating:4.3, npn:"80024706（旧配方）/ 80032569（Max Strength）",
+          more:"<p>Jean Coutu 等加拿大药房的同类变体约 $33–37/30 片；iHerb 60 片装 CA$67.33。<strong>加美配方不同，买时看标签。</strong>Max Strength / Energy 版含咖啡因 49 mg + 绿茶，属兴奋剂配方。评分 4.3（TopConsumerReviews）。</p>" },
+        { rank:3, name:"Remifemin", brand:"Integrative Therapeutics / Nature's Way",
+          verdict:"推荐 · 极简之选", vcls:"b-good", canadian:false, transparent:true,
+          ing:"<strong>黑升麻 iCR 标准化提取物</strong>，20 mg/片，早晚各 1 片（40 mg/天）。单一成分，无激素。",
+          price:34.97, priceNote:"120 片 · 60 天", days:60, rating:4.4, npn:"本次核查未找到",
+          more:"<p>全球临床研究最多的黑升麻提取物，上市 60 多年。与所有黑升麻产品一样有肝损伤警告，最长服用 6 个月。vitamart.ca 核查时售罄；美国价约 US$21.95/120 片。评分 4.4（TopConsumerReviews）。</p>" },
+        { rank:4, name:"Maca 玛卡", brand:"NOW Foods",
+          verdict:"预算搭配", vcls:"b-info", canadian:false, transparent:true,
+          ing:"<strong>玛卡根粉 500 mg/粒</strong>。不含激素、不含植物雌激素，试验确认不改变雌二醇、FSH、LH、黄体酮和睾酮。",
+          price:17.45, priceNote:"100 粒（Aviva Health 价）", days:17, rating:null, npn:"80039632",
+          more:"<p>试验有效剂量是糊化玛卡 <strong>3.0–3.5 g/天</strong>，即每天约 6 粒，一瓶约 17 天——按这个剂量吃其实不贵，但按标签 1–2 粒吃多半剂量不足。适合作为精力/情绪/性欲的搭配，而非主力。</p>" },
+        { rank:5, name:"Healthy Hormones", brand:"CanPrev（加拿大）",
+          verdict:"可选", vcls:"b-mute", canadian:true, transparent:true,
+          ing:"每 2 粒：<strong>吲哚-3-甲醇 400 mg、圣洁莓提取物 400 mg</strong>、镁 150 mg、B6 50 mg、黑升麻 40 mg、维生素 D3 1000 IU。",
+          price:38.99, priceNote:"60 粒 · 30 天（另有 $42.99 报价）", days:30, rating:4.42, npn:"页面未标注",
+          more:"<p>加拿大品牌，剂量全公开。定位是 PMS / 雌激素代谢方向，<strong>不是更年期配方</strong>。标签明确警示：孕期/哺乳期禁用、<strong>可能降低避孕药效果</strong>、雌激素偏低状态慎用。评分 4.42/5（vitasave.ca，12 条评价）。</p>" },
+        { rank:6, name:"100% Complete Menopause Multi", brand:"Jamieson（加拿大）",
+          verdict:"可选 · 当复合维生素看", vcls:"b-mute", canadian:true, transparent:true,
+          ing:"全谱复合维生素 + <strong>黑升麻提取物（40 mg 当量）+ 圣洁莓（30 mg 当量）</strong>，1 片/天。",
+          price:25.99, priceNote:"115 片 · 115 天", days:115, rating:null, npn:"本次核查未见",
+          more:"<p>每日成本全场最低（约 $0.23/天），但草本剂量远低于研究水平：圣洁莓研究剂量是 20–40 mg <em>提取物</em>，这里 30 mg 是 10:1 折算的\"当量\"，口径含糊。当普通复合维生素吃没问题，别指望它处理潮热。</p>" },
+        { rank:7, name:"DIM-Plus", brand:"Nature's Way",
+          verdict:"谨慎", vcls:"b-warn", canadian:false, transparent:true,
+          ing:"<strong>BioResponse-DIM</strong>（吸收增强型二吲哚甲烷）+ 十字花科蔬菜复方；产品页未确认每粒 DIM 具体含量。",
+          price:43.49, priceNote:"120 粒（vitamart.ca，核查时售罄）", days:null, rating:null, npn:"本次核查未找到",
+          more:"<p>DIM 改变的是尿液中雌激素的<strong>代谢途径比例</strong>，血清雌激素水平不变，乳腺密度也不变；PMS 等临床终点大多为阴性。一项在他莫昔芬使用者中的 12 个月随机试验显示 DIM 会<strong>降低他莫昔芬及其活性代谢物水平</strong>——服用他莫昔芬者绝不能搭配。常见副作用：尿色变深（无害）、肠胃不适、头痛。孕期/哺乳期禁用。</p>" },
+        { rank:8, name:"Women's Phytoestrogen Formula", brand:"GNC",
+          verdict:"谨慎", vcls:"b-warn", canadian:false, transparent:true,
+          ing:"每 2 粒：<strong>黑升麻 40 mg、月见草油 300 mg、大豆异黄酮提取物 125 mg</strong>、B6 50 mg、B12、钙、镁。",
+          price:null, priceNote:"无加元价（美国约 US$33/120 粒）", days:60, rating:null, npn:"无（美国标签产品）",
+          more:"<p>剂量全部公开是加分项。但月见草油 300 mg/天远低于研究用过的剂量（而研究本身结论就是无效）；大豆异黄酮 125 mg 高于 50 mg 研究门槛，但标签没标染料木素含量。加拿大 gnc.ca 是否有货未确认。</p>" },
+        { rank:9, name:"Women's Menopause Formula", brand:"GNC",
+          verdict:"谨慎 · 信息不足", vcls:"b-warn", canadian:false, transparent:true,
+          ing:"<strong>黑升麻根提取物 160 mg + 大豆异黄酮</strong>（配 Isolase 酶），按标签数据库记录。",
+          price:null, priceNote:"未观察到加元价", days:null, rating:null, npn:"未找到",
+          more:"<p>美国标签产品，加拿大 gnc.ca 的供应情况未能确认。想在 GNC 买\"女性荷尔蒙\"类产品的话，先确认加拿大门店/官网实际在售的版本和标签再下单。</p>" },
+        { rank:10, name:"Amberen", brand:"Lunada Biomedical",
+          verdict:"不推荐", vcls:"b-bad", canadian:false, transparent:false,
+          ing:"<strong>专利\"Amberen 复方\"395 mg</strong>：琥珀酸铵、琥珀酸钙、<strong>味精（谷氨酸钠）</strong>、甘氨酸、琥珀酸镁、富马酸锌 + 维生素 E 5 mg；2 粒/天。",
+          price:null, priceNote:"约 CA$32–48/月（仅美国 Amazon/Walmart/Costco 估算）", days:30, rating:4.0, npn:"无（加拿大药房无售）",
+          more:"<p><strong>专利配方把每个成分的实际剂量全部隐藏。</strong>支持它的随机试验汇总分析由厂商资助、作者有利益冲突。加拿大没有正规零售渠道，只能跨境购买。评分 4.0（TopConsumerReviews）。</p>" },
+        { rank:11, name:"Phytoestrogen with Wild Yam, Black Cohosh & Dong Quai", brand:"Solaray",
+          verdict:"不推荐", vcls:"b-bad", canadian:false, transparent:false,
+          ing:"<strong>野山芋 + 植物雌激素复方 + 黑升麻 + 当归</strong>；商品页未逐项标注各成分毫克数。",
+          price:29.62, priceNote:"120 粒（iHerb 加拿大站，可寄加拿大）", days:null, rating:null, npn:"无（美国产品经 iHerb）",
+          more:"<p>与宣传单\"野山芋 + 植物雌激素\"的概念最接近的一款——但野山芋在人体内无法转化成任何激素（见上方核查），真正可能起作用的只有其中的异黄酮，而剂量不透明。当归还会增强华法林的出血风险。</p>" }
+      ];
+
+      var INGREDIENTS = [
+        { name:"大豆异黄酮", en:"Soy isoflavones", verdict:"证据最强（仅限潮热）", cls:"b-good",
+          body:"<p>荟萃分析（17 项随机试验）：平均 54 mg/天、6 周至 12 个月，潮热频率比安慰剂多降 20.6%、严重程度多降 26.2%；其中染料木素 ≥18.8 mg/天时效果约 2 倍。北美绝经学会认为：每天 ≥4 次潮热的女性，可用 ≥50 mg/天试 ≥12 周，无效就停。<strong>但它不升高雌二醇、不影响 FSH</strong>（高确定性证据），对子宫内膜和阴道也没有雌激素样作用。</p>",
+          dose:"≥50 mg/天（其中染料木素 ≥约 19 mg），连吃 ≥12 周", flag:"与左甲状腺素（优甲乐）同服可能降低其吸收（有病例报告；一项 60 mg 小试验未见影响）——错开 ≥4 小时并复查 TSH；激素敏感型癌症患者先问医生，可能干扰他莫昔芬/芳香化酶抑制剂。" },
+        { name:"EstroG-100", en:"专利草本复方（非雌激素）", verdict:"有 RCT 支持", cls:"b-good",
+          body:"<p>当归属、威灵仙属、糙苏三种植物提取物的复方，<strong>本身不含植物雌激素、不走雌激素受体路线</strong>。两项随机对照试验显示潮热和整体更年期症状评分改善，且不改变雌激素和 FSH。是 Webber Naturals 加拿大版更年期配方的核心成分。</p>",
+          dose:"514 mg/天", flag:"现有试验中安全性记录良好；长期数据有限。" },
+        { name:"黑升麻", en:"Black cohosh", verdict:"证据矛盾", cls:"b-warn",
+          body:"<p>Cochrane 综述（16 项试验，2,027 人，中位 40 mg/天、约 23 周）：潮热频率与安慰剂<strong>无显著差异</strong>，结论是\"证据不足\"。个别标准化提取物（iCR / Remifemin）试验结果积极。北美绝经学会 2023 年立场已<strong>不再推荐</strong>黑升麻治疗潮热。</p>",
+          dose:"标准化提取物 20–40 mg/天；最长 6 个月", flag:"罕见但严重的<span class=\"flag\">肝损伤</span>（含急性肝炎病例），多国监管要求肝警告。孕期禁用；服用他莫昔芬/SERM 类药物、激素敏感型癌症患者避免。" },
+        { name:"红三叶草异黄酮", en:"Red clover isoflavones", verdict:"效果边际", cls:"b-warn",
+          body:"<p>荟萃分析：40–82 mg/天平均每天少约 1.5 次潮热，p=0.05，刚好踩在显著线边缘。较新的综述认为每天 ≥80 mg、且基线潮热 ≥5–7 次/天的女性效果相对更一致。同样<strong>不升高雌激素</strong>。</p>",
+          dose:"40–80 mg/天，12–16 周", flag:"短期耐受性好，长期安全性数据缺乏；激素敏感型癌症同样需谨慎；可能有 CYP450 与抗凝相互作用。" },
+        { name:"圣洁莓", en:"Chasteberry / Vitex", verdict:"强在 PMS，不是更年期", cls:"b-info",
+          body:"<p>证据最扎实的方向是 <strong>PMS、周期性乳房胀痛、月经不规律</strong>（通过多巴胺通路降低泌乳素；一项试验中缓解乳房胀痛效果与溴隐亭相当）。更年期证据只有一个 2026 年的小试验（60 人，300 mg/天 × 60 天），尚属早期。</p>",
+          dose:"标准化提取物 20–40 mg/天，连吃 3 个周期", flag:"轻微肠胃不适、头痛。孕期/哺乳期避免；<span class=\"flag\">可能降低激素类避孕药效果</span>；与多巴胺激动剂/拮抗剂相互作用；不要自行与激素治疗叠加。" },
+        { name:"南非醉茄", en:"Ashwagandha", verdict:"帮情绪睡眠，不碰雌激素", cls:"b-info",
+          body:"<p>荟萃分析支持降低皮质醇（主观压力感的效果不太一致）。更年期方面有 3 个小试验（8–12 周，60–100 人）：更年期评分下降、潮热减少、睡眠改善。其中一个小试验报告雌二醇升高，<strong>需要重复验证才能当真</strong>。</p>",
+          dose:"根提取物 300–600 mg/天（KSM-66 / Sensoril 类）", flag:"<span class=\"flag\">孕期禁用</span>（传统堕胎用途，有流产风险）；可能升高甲状腺激素，甲亢或服甲状腺药者慎用；与镇静剂、免疫抑制剂相互作用；有罕见肝损伤报告。" },
+        { name:"玛卡", en:"Maca root", verdict:"帮性欲情绪，不含激素", cls:"b-info",
+          body:"<p>对性欲、情绪、性功能的支持为中等证据，对潮热证据弱。玛卡<strong>不含植物雌激素、不含任何激素</strong>，多项试验确认它不改变血清雌二醇、FSH、LH、黄体酮和睾酮——所以它有效的话，机制也不是\"补雌激素\"。</p>",
+          dose:"糊化玛卡 3.0–3.5 g/天，8–12 周（普通胶囊 500–750 mg，即每天 4–6 粒）", flag:"总体安全；生玛卡含甲状腺肿素，选糊化产品；有轻微兴奋作用，建议早上吃；与激素治疗/避孕药/利尿剂同用、孕期需谨慎。" },
+        { name:"DIM（二吲哚甲烷）", en:"Diindolylmethane", verdict:"改代谢比例，不升雌激素", cls:"b-warn",
+          body:"<p>DIM 让尿液中雌激素代谢偏向 2-羟雌酮（2:16α 比例上升）并升高 SHBG，但<strong>血清雌激素不变</strong>，乳腺密度也不变。PMS 等临床终点大多为阴性结果。</p>",
+          dose:"吸收增强型 DIM 100–300 mg/天，4–12 周", flag:"尿色变深（无害）、肠胃不适、头痛。<span class=\"flag\">孕期/哺乳期禁用</span>；12 个月随机试验显示 DIM 降低他莫昔芬/内多昔芬水平，绝不能与其同服；慎与 CYP3A4 代谢药物、抗凝药合用。" },
+        { name:"月见草油", en:"Evening primrose oil", verdict:"证据为阴性", cls:"b-bad",
+          body:"<p>随机试验（如 Chenoy 1994，BMJ：4,000 mg/天 × 6 个月）显示对潮热的频率和严重程度<strong>不优于安慰剂</strong>。也不升高雌激素。很多复合配方放它纯属凑数，且剂量（如 300 mg/天）远低于试验剂量。</p>",
+          dose:"无有效剂量（研究用过 500–4,000 mg/天，均未显示获益）", flag:"与抗凝/抗血小板药同用增加出血风险；癫痫及服用吩噻嗪类药物者慎用；轻微肠胃不适。" },
+        { name:"当归", en:"Dong quai", verdict:"单用证据为阴性", cls:"b-bad",
+          body:"<p>唯一一项单独试验（71 人，24 周）：潮热改善与安慰剂<strong>无差异</strong>。传统上只出现在复方里。不含典型植物雌激素，但纪念斯隆凯特琳癌症中心提示可能有雌激素样作用，激素敏感人群需谨慎。</p>",
+          dose:"单项试验用根 4.5 g/天（未显示获益）", flag:"<span class=\"flag\">显著增强华法林作用</span>（有 INR 升高、出血病例）；光敏性；孕期避免。" },
+        { name:"野山芋 / 薯蓣皂苷", en:"Wild yam / diosgenin", verdict:"无可信证据 · 核心卖点被证伪", cls:"b-bad",
+          body:"<p>薯蓣皂苷能在实验室被化学转化成黄体酮和 DHEA，但<strong>人体没有这个转化所需的酶</strong>——NAMS 与 ACOG 均明确表态。野山芋霜的随机试验：激素水平零变化，症状不优于安慰剂。凡是靠野山芋讲\"补激素\"故事的产品，故事本身就是假的。</p>",
+          dose:"不存在有效剂量", flag:"本身毒性低，但个别\"野山芋霜\"暗中添加了 USP 黄体酮——买这类产品务必看全成分表。" }
+      ];
+
+      var SAFETY = [
+        { title:"有乳腺癌 / 卵巢癌 / 子宫癌病史（尤其 ER 阳性）", body:"<p>植物雌激素在激素敏感组织中的安全性<strong>未有定论</strong>。纪念斯隆凯特琳癌症中心建议这类人群避免当归、红三叶草类产品；乳腺癌幸存者用黑升麻也只应在医生知情下谨慎进行。高风险人群同理。</p>" },
+        { title:"怀孕、备孕或哺乳期", body:"<p>黑升麻、当归、圣洁莓、DIM、南非醉茄<strong>全部属于禁用/避免</strong>。南非醉茄有传统堕胎用途和流产风险记录。</p>" },
+        { title:"子宫内膜异位症或子宫肌瘤", body:"<p>具雌激素活性的草本可能加重病情；加拿大同类产品（如 Nutrilite Menopause Ease）的标签对此有明确警示。</p>" },
+        { title:"在吃抗凝药（华法林等）", body:"<p>当归会升高 INR、增加出血风险，有成文病例；月见草油同样增加出血风险。这两类成分直接避开。</p>" },
+        { title:"在吃他莫昔芬或芳香化酶抑制剂", body:"<p>植物雌激素可能干扰疗效；DIM 在随机试验中实测<strong>降低了他莫昔芬及其活性代谢物的血药水平</strong>。不要自行叠加任何\"雌激素支持\"产品。</p>" },
+        { title:"在吃甲状腺药（左甲状腺素 / 优甲乐）", body:"<p>大豆类产品可能降低吸收（有病例报告；一项 60 mg 异黄酮小试验未见影响）。实用做法：甲状腺药单独空腹吃，大豆类保健品<strong>错开 ≥4 小时</strong>，并复查 TSH。</p>" },
+        { title:"在吃激素类避孕药", body:"<p>圣洁莓可能降低避孕效果（CanPrev 产品标签明确警示）。含圣洁莓的配方与避孕药同用前先问药剂师。</p>" },
+        { title:"有肝病，或吃着镇静剂 / 抗抑郁药 / 多巴胺类药物", body:"<p>黑升麻有罕见肝损伤报告：出现尿色深、黄疸、腹痛、异常疲劳，<strong>立即停用黑升麻类产品并就医</strong>。黑升麻、南非醉茄、圣洁莓都可能与镇静、抗抑郁、多巴胺类药物相互作用。</p>" },
+        { title:"出现这些情况：别吃保健品，直接看医生", body:"<p>停经满 12 个月后又出血（需要医学排查，不能靠保健品）；症状严重或不典型；某个产品吃了 8–12 周毫无改善；或打算同时叠加多个\"荷尔蒙\"类产品之前。</p>" }
+      ];
+
+      /* ================= render: claims & accordions ================= */
+      function accordionHTML(item, titleHTML){
+        return '<div class="acc"><button class="acc-btn" aria-expanded="false">' + titleHTML +
+          '<span class="chev" aria-hidden="true">▾</span></button><div class="acc-body">' + item.body + '</div></div>';
+      }
+      function wireAccordions(container){
+        var btns = container.querySelectorAll('.acc-btn');
+        for (var i = 0; i < btns.length; i++){
+          btns[i].addEventListener('click', function(){
+            var acc = this.parentElement;
+            var open = acc.classList.toggle('open');
+            this.setAttribute('aria-expanded', open ? 'true' : 'false');
+          });
+        }
+      }
+
+      var claimsEl = document.getElementById('claims');
+      claimsEl.innerHTML = CLAIMS.map(function(c){
+        return accordionHTML(c, '<span>' + c.claim + '</span><span class="badge ' + c.cls + '">' + c.verdict + '</span>');
+      }).join('');
+      wireAccordions(claimsEl);
+
+      var ingEl = document.getElementById('ing-list');
+      ingEl.innerHTML = INGREDIENTS.map(function(g){
+        var body = g.body +
+          '<div class="dose"><div><b>研究剂量</b>' + g.dose + '</div><div><b>安全提示</b>' + g.flag + '</div></div>';
+        return '<div class="acc"><button class="acc-btn" aria-expanded="false"><span>' + g.name +
+          ' <span style="color:var(--faint); font-weight:500; font-size:13px">' + g.en + '</span></span>' +
+          '<span class="badge ' + g.cls + '">' + g.verdict + '</span><span class="chev" aria-hidden="true">▾</span></button>' +
+          '<div class="acc-body">' + body + '</div></div>';
+      }).join('');
+      wireAccordions(ingEl);
+
+      var safeEl = document.getElementById('safe-list');
+      safeEl.innerHTML = '<div class="safe-grid">' + SAFETY.map(function(s){
+        return accordionHTML(s, '<span>' + s.title + '</span>');
+      }).join('') + '</div>';
+      wireAccordions(safeEl);
+
+      /* ================= render: products ================= */
+      var grid = document.getElementById('grid');
+      var emptyEl = document.getElementById('empty');
+      var countEl = document.getElementById('count');
+      var currentFilter = 'all';
+
+      function money(v){ return '$' + v.toFixed(2); }
+      function perDay(p){
+        if (p.price == null || !p.days) return null;
+        return p.price / p.days;
+      }
+      function cardHTML(p){
+        var pd = perDay(p);
+        var rating = (p.rating != null) ? '<span>评分 <b>' + p.rating.toFixed(p.rating % 1 ? 2 : 1) + '</b></span>' : '<span>评分 <b>未观察到</b></span>';
+        var supply = p.days ? '<span>供应 <b>' + p.days + ' 天</b></span>' : '<span>供应 <b>未确认</b></span>';
+        return '<article class="card' + (p.top ? ' top' : '') + '">' +
+          '<div><div class="brand">' + p.brand + '</div><h3>' + p.name + '</h3></div>' +
+          '<div class="badges"><span class="badge ' + p.vcls + '">' + p.verdict + '</span>' +
+            (p.transparent ? '<span class="badge b-mute">剂量公开</span>' : '<span class="badge b-bad">专利配方 · 剂量隐藏</span>') +
+            (p.canadian ? '<span class="badge b-mute">加拿大品牌</span>' : '') + '</div>' +
+          '<p class="ing">' + p.ing + '</p>' +
+          '<div class="price-row"><div class="price"><b>' + (p.price != null ? money(p.price) : '无加元价') + '</b><span>' + p.priceNote + '</span></div>' +
+            (pd != null ? '<div class="perday"><b>' + money(pd) + '</b><span>约合每天</span></div>' : '') + '</div>' +
+          '<div class="meta">' + rating + supply + '<span>NPN <b>' + p.npn + '</b></span></div>' +
+          '<button class="more-btn" aria-expanded="false">详情与注意事项</button>' +
+          '<div class="more">' + p.more + '</div></article>';
+      }
+      function matches(p){
+        if (currentFilter === 'all') return true;
+        if (currentFilter === 'recommended') return ['首选推荐','次选推荐','推荐 · 极简之选','预算搭配'].indexOf(p.verdict) >= 0;
+        if (currentFilter === 'canadian') return p.canadian;
+        if (currentFilter === 'transparent') return p.transparent;
+        if (currentFilter === 'cadprice') return p.price != null;
+        return true;
+      }
+      function render(){
+        var sort = document.getElementById('sort').value;
+        var list = PRODUCTS.filter(matches);
+        list.sort(function(a, b){
+          if (sort === 'perday'){
+            var x = perDay(a), y = perDay(b);
+            if (x == null && y == null) return a.rank - b.rank;
+            if (x == null) return 1; if (y == null) return -1;
+            return x - y;
+          }
+          if (sort === 'price'){
+            if (a.price == null && b.price == null) return a.rank - b.rank;
+            if (a.price == null) return 1; if (b.price == null) return -1;
+            return a.price - b.price;
+          }
+          if (sort === 'rating'){
+            if (a.rating == null && b.rating == null) return a.rank - b.rank;
+            if (a.rating == null) return 1; if (b.rating == null) return -1;
+            return b.rating - a.rating;
+          }
+          if (sort === 'days'){
+            var dx = a.days || 0, dy = b.days || 0;
+            return dy - dx || a.rank - b.rank;
+          }
+          return a.rank - b.rank;
+        });
+        grid.innerHTML = list.map(cardHTML).join('');
+        emptyEl.hidden = list.length > 0;
+        countEl.textContent = '显示 ' + list.length + ' / ' + PRODUCTS.length + ' 款';
+        var btns = grid.querySelectorAll('.more-btn');
+        for (var i = 0; i < btns.length; i++){
+          btns[i].addEventListener('click', function(){
+            var more = this.nextElementSibling;
+            var open = more.classList.toggle('open');
+            this.setAttribute('aria-expanded', open ? 'true' : 'false');
+            this.textContent = open ? '收起详情' : '详情与注意事项';
+          });
+        }
+      }
+      document.getElementById('filters').addEventListener('click', function(e){
+        var btn = e.target.closest('.chip');
+        if (!btn) return;
+        var chips = this.querySelectorAll('.chip');
+        for (var i = 0; i < chips.length; i++) chips[i].setAttribute('aria-pressed', 'false');
+        btn.setAttribute('aria-pressed', 'true');
+        currentFilter = btn.getAttribute('data-filter');
+        render();
+      });
+      document.getElementById('sort').addEventListener('change', render);
+      render();
+
+      /* ================= tab bar active state ================= */
+      var tabLinks = document.querySelectorAll('#tabbar a');
+      var sections = ['verdict','products','ingredients','recommend','safety'].map(function(id){ return document.getElementById(id); });
+      function onScroll(){
+        var pos = window.scrollY + 120, current = 'verdict';
+        sections.forEach(function(s){ if (s && s.offsetTop <= pos) current = s.id; });
+        tabLinks.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
+      }
+      window.addEventListener('scroll', onScroll, { passive:true });
+      onScroll();
+    </script>
+  </body>
+</html>
